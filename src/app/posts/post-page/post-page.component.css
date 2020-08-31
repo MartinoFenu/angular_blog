@@ -1,0 +1,7 @@
+header {
+  text-align: center;
+}
+.new-comment-container {
+  max-width: 1024px;
+  width: 100%;
+}

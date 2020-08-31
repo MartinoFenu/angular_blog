@@ -1,0 +1,12 @@
+<mat-spinner *ngIf="isFetching && !error"></mat-spinner>
+<mat-error *ngIf="error"> {{ error }} </mat-error>
+<p *ngIf="comments.length < 1 && !isFetching">No posts</p>
+<div 
+  *ngIf="comments.length >= 1 && !isFetching"
+  class="comments-list">
+  <h4>Comments</h4>
+  <app-comment-item
+    *ngFor="let comment of comments"
+    [comment]="comment">
+  </app-comment-item>
+</div>

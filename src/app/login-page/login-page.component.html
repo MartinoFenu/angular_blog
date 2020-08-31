@@ -1,0 +1,64 @@
+<div class="login-wrapper" fxLayoutAlign="center center">
+  <mat-card fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <form class="login-form" 
+    (ngSubmit)="onSubmit(loginFormRef)" 
+    #loginFormRef="ngForm">
+    <mat-card-content fxLayout="column">
+      <mat-error *ngIf="error"> {{ error }} </mat-error>
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input
+          ngModel
+          name="username" 
+          matInput
+          #usernameRef
+          required >
+        <mat-error 
+          *ngIf="!usernameRef.valid">
+          This is a required field.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          ngModel
+          name="password"
+          matInput [type]="hide ? 'password' : 'text'"
+          required
+          #passwordRef
+        >
+        <button 
+          mat-icon-button 
+          matSuffix 
+          (click)="hide = !hide" [attr.aria-label]="'Hide password'" 
+          [attr.aria-pressed]="hide"
+          type="button"
+        >
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error 
+          *ngIf="!passwordRef.valid">
+          This is a required field.
+        </mat-error>
+      </mat-form-field>
+      <div 
+        class="spinner-box" 
+        fxLayoutAlign="center center" 
+        *ngIf="isLoading">
+        <mat-spinner diameter="50" ></mat-spinner>
+      </div>
+      <button
+        *ngIf="!isLoading"
+        color="primary"
+        mat-flat-button 
+        type="submit"
+        [disabled]="!loginFormRef.valid"
+      >Login
+      </button>
+    </mat-card-content>
+  </form>
+  </mat-card>
+</div>

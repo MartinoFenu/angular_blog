@@ -1,0 +1,34 @@
+<h4>Add a comment</h4>
+<form class="comment-form"
+  fxLayout="column" fxLayoutAlign="center end"
+  (ngSubmit)="onSubmit(newCommentForm)"
+  #newCommentForm="ngForm">
+  <mat-error *ngIf="error"> {{ error }} </mat-error>
+  <mat-form-field appearance="outline" class="full-width">
+    <textarea
+      ngModel
+      name="comment"
+      matInput 
+      placeholder="Leave a comment..."
+      required
+      #newCommentRef
+    ></textarea>
+    <mat-error 
+      *ngIf="!newCommentRef.valid">
+      This is a required field.
+    </mat-error>
+  </mat-form-field>
+  <div
+    class="spinner-box" 
+    fxLayoutAlign="center center" 
+    *ngIf="isLoading">
+    <mat-spinner diameter="50" ></mat-spinner>
+  </div>
+  <button
+    *ngIf="!isLoading"
+    color="primary"
+    mat-flat-button 
+    type="submit"
+    [disabled]="!newCommentForm.valid"
+  >Send</button>
+</form>

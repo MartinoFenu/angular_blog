@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-spinner *ngIf="isFetching"></mat-spinner>
+<div *ngIf="!isFetching">
+  <header>
+    <img src="{{ post.postImage.url }}"
+    title="{{ post.postImage.title }}"
+    alt="{{ post.postImage.title }}">
+   <h1> {{ post.title }}</h1>
+  </header>
+  <div>
+    {{ post.body }}
+  </div>
+</div>
+<app-comments-list
+  [postId]="postId" >
+</app-comments-list>
+<app-new-comment
+  class="new-comment-container"
+  [postId]="postId" >
+</app-new-comment>
+</div>

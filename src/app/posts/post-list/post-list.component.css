@@ -1,0 +1,17 @@
+.card-post {
+  padding: 1% 3%;
+  cursor: pointer;
+}
+.card-post:hover {
+  transform: scale(1.01);
+}
+.logut {
+  padding: 0 2%;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: right;
+}
+.logut span:hover {
+  cursor: pointer;
+  color: red;
+}
